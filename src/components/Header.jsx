@@ -1,7 +1,9 @@
+import './css/Header.css'
+
 export function Header () {
   return (
     <>
-      Header
+      <div className="header-wrapper">Blog Project</div>
     </>
   )
 }
