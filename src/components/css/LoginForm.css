@@ -18,12 +18,13 @@ body {
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1.3rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .form-group input {
@@ -33,6 +34,7 @@ body {
   border-bottom: 1px solid black;
   color: black;
   font-size: 1rem;
+  z-index: 3;
 }
 
 .form-group input:focus {
@@ -44,5 +46,18 @@ body {
   font-weight: 600;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+.form-group label {
+  position: absolute;
+  z-index: 2;
+  bottom: 5px;
+  color: gray;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+  bottom: 1.5rem;
 }
 

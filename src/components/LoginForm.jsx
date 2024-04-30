@@ -50,7 +50,7 @@ export function LoginForm ({ setUser }) {
       
     } catch (error) {
       console.log(error)
-      setErrorMessage('An erro has ocurred.')
+      setErrorMessage('An error has ocurred.')
     }
   } 
 
@@ -60,12 +60,12 @@ export function LoginForm ({ setUser }) {
       <h1>Login</h1>
         <form className="login-form" method="post" onSubmit={handleLogin}>  
           <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input type="text" name="username" id="username" onChange={(e) => handleUsernameChange(e)}/>
+            <input type="text" name="username" id="username" placeholder="" onChange={(e) => handleUsernameChange(e)}/>
+            <label htmlFor="username" id="username-label">👤 Username</label>
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" onChange={(e) => handlePasswordChange(e)} />
+            <input type="password" name="password" id="password" placeholder="" onChange={(e) => handlePasswordChange(e)} />
+            <label htmlFor="password" id="password-label">🔒︎ Password</label>
           </div>
           <button type="submit">Login</button>
         </form>
