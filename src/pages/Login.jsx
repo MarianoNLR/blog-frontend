@@ -1,11 +1,13 @@
 import { LoginForm } from "../components/LoginForm";
 import PropTypes from 'prop-types'
+import './css/Login.css'
 
 export function Login ({setUser}) {
   return (
     <>
-      LOGIN PAGE
-      <LoginForm setUser={setUser}></LoginForm>
+      <main className="main">
+        <LoginForm setUser={setUser}></LoginForm>
+      </main>
     </>
   )
 }

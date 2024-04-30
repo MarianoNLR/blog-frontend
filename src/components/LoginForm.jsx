@@ -2,6 +2,7 @@ import { useState } from "react"
 import {useNavigate} from 'react-router-dom'
 import { FormNotification } from "./FormNotification.jsx"
 import PropType from 'prop-types'
+import './css/LoginForm.css'
 export function LoginForm ({ setUser }) {
 
   const [username, setUsername] = useState('')
@@ -56,9 +57,16 @@ export function LoginForm ({ setUser }) {
   return (
     <>
       <div className="login-form-wrapper">
-        <form method="post" onSubmit={handleLogin}>
-          <input type="text" name="username" id="username" onChange={(e) => handleUsernameChange(e)}/>
-          <input type="password" name="password" id="password" onChange={(e) => handlePasswordChange(e)} />
+      <h1>Login</h1>
+        <form className="login-form" method="post" onSubmit={handleLogin}>  
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input type="text" name="username" id="username" onChange={(e) => handleUsernameChange(e)}/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" id="password" onChange={(e) => handlePasswordChange(e)} />
+          </div>
           <button type="submit">Login</button>
         </form>
         <FormNotification message={errorMessage} />
