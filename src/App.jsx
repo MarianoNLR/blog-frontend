@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Home } from './pages/Home.jsx'
 import { Error404 } from './pages/Error404.jsx'
 import { Login } from './pages/Login.jsx'
+import { Register } from './pages/Register.jsx'
 import Layout from './components/Layout.jsx'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route index path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login setUser={setUser} />}></Route>
+          <Route path='/register' element={<Register />}></Route>
           <Route path='*' element={<Error404 />}></Route>
         </Routes>
       </Layout>
