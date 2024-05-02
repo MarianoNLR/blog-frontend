@@ -13,18 +13,22 @@ export function LoginForm ({ setUser }) {
   
   const navigate = useNavigate()
 
+  //handler for username state 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value)
   }
 
+  //handler for password state
   const handlePasswordChange = (e) => {
     setPassword(e.target.value)
   }
 
+  //handler for login operation
   const handleLogin = async (e) => {
     e.preventDefault()
 
     try {
+      // fetch to my local api
       const res = await fetch('http://localhost:3000/users/login', {
         method: 'POST',
         headers: {
@@ -33,7 +37,8 @@ export function LoginForm ({ setUser }) {
         },
         body: JSON.stringify({username, password})
       })
-      console.log(res.ok)
+      
+      //if response is not ok set an error message to display as a form notificacion
       if (!res.ok) {
         setErrorMessage('Invalid username or password')
       } else {
@@ -41,10 +46,14 @@ export function LoginForm ({ setUser }) {
         window.localStorage.setItem(
           'loggedBlogApp', JSON.stringify(userData)
         )
-        console.log(userData)
-        setUser('x')
+        
+        //set user state
+        setUser(userData)
+
+        //reset states
         setUsername('')
         setPassword('')
+        //redirect to home
         navigate('/')
       }
       
