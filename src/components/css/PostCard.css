@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+.post-card-wrapper {
+    color: white;
+    width: 100%;
+    text-align: start;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.post-card-title {
+    margin: 0;
+}
+
+.post-card-description {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post-card-wrapper:hover {
+    background-color: white;
+    color: black;
+}
