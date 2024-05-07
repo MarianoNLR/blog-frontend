@@ -1,5 +1,5 @@
 import { useState } from "react"
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 import { FormNotification } from "./FormNotification.jsx"
 import PropType from 'prop-types'
 import './css/LoginForm.css'
@@ -78,6 +78,10 @@ export function LoginForm ({ setUser }) {
           </div>
           <button type="submit">Login</button>
         </form>
+        <div className="register-link">
+          <p className="register-link-text">You do not have an account?</p>
+          <Link to="/register">Register Now</Link>
+        </div>
         <FormNotification message={errorMessage} />
       </div>
     </>
