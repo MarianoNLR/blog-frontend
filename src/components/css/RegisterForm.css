@@ -53,3 +53,8 @@
 .register-form-group input:not(:placeholder-shown) + label {
   bottom: 1.5rem;
 }
+
+.singin-link-text {
+  margin: 0;
+  margin-top: 10px
+}

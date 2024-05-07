@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './css/RegisterForm.css'
 import { FormNotification } from './FormNotification'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 export function RegisterForm () {
   const [username, setUsername] = useState('')
@@ -87,6 +87,10 @@ export function RegisterForm () {
             <button type="submit">Sign-up</button>
             </div>
         </form>
+        <div className="singin-link">
+          <p className="singin-link-text">You already have an account?</p>
+          <Link to="/login">Sign in</Link>
+        </div>
         <FormNotification message={errorMessage}></FormNotification>
       </div>
     </>
