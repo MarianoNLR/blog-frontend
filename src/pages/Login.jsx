@@ -2,11 +2,11 @@ import { LoginForm } from "../components/LoginForm";
 import PropTypes from 'prop-types'
 import './css/Login.css'
 
-export function Login ({setUser}) {
+export function Login () {
   return (
     <>
       <main className="main">
-        <LoginForm setUser={setUser}></LoginForm>
+        <LoginForm></LoginForm>
       </main>
     </>
   )
