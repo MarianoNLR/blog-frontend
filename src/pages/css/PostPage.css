@@ -19,6 +19,7 @@ body {
     margin: 0 auto;
     min-height: 100vh;
     width: 50%;
+    margin-top: 2rem;
 }
 
 .post-wrapper {
@@ -26,14 +27,21 @@ body {
     flex-direction: column;
     border-bottom: 1px solid gray;
     padding: 10px;
+    border: 2px solid gray;
+    border-radius: 3px;
 }
 
 .post-title {
+    margin: 0;
     text-align: center;
 }
 
+
 .post-publishedAt {
+    border-top: 1px dashed gray;
     text-align: end;
+    margin: 0;
+    padding-top: 8px;
 }
 
 .likes-section {
@@ -41,7 +49,7 @@ body {
     justify-content: start;
     align-items: center;
     gap: 0.3rem;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid gray;
     padding: 10px;
 }
 
@@ -59,7 +67,7 @@ body {
 }
 
 .comments-section {
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid gray;
     padding: 10px;
 }
 
