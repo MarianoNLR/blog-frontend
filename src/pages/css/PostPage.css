@@ -37,11 +37,29 @@ body {
 }
 
 .likes-section {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.3rem;
     border-bottom: 1px solid gray;
     padding: 10px;
+}
+
+.like-button-wrapper {
+    display: flex;
+    cursor: pointer;
+}
+
+.feather-heart {
+    transition: all 0.3s linear;
+}
+
+.feather-heart:hover {
+    color: red;
 }
 
 .comments-section {
     border-bottom: 1px solid gray;
     padding: 10px;
 }
+
