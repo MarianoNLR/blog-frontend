@@ -11,6 +11,7 @@ export function PostPage () {
         .then(res => res.json())
         .then(post => setPost(post))
         .catch(err => console.log(err))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const formatDate = (createdAt) => {
