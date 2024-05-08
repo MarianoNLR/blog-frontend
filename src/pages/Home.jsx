@@ -12,7 +12,6 @@ export function Home () {
     
   },[])
 
-
   return (
     <>
     <main className='main-home'>
@@ -20,7 +19,7 @@ export function Home () {
       <div className='post-list-wrapper'>
         {postList.length > 0 && 
           postList.map((item, index) =>
-            <PostCard key={index} title={item.title} description={item.description} id={item.id}/>
+            <PostCard key={index} item={item} />
         )}
       </div>
     </main>
