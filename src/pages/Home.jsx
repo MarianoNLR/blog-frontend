@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect} from 'react'
 import { PostCard } from '../components/PostCard.jsx'
 import './css/Home.css'
 

@@ -14,7 +14,7 @@ export function PostPage () {
         .then(res => res.json())
         .then(post => setPost(post))
         .catch(err => console.log(err))
-        console.log(post)
+        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -30,12 +30,14 @@ export function PostPage () {
 
     const handleLike = async () => {
         try {
+            let userData = localStorage.getItem('loggedBlogApp')
             const res = await fetch(`http://localhost:3000/posts/${id}/like`, {
                 method: 'POST',
                 headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
-                },
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(userData).token}`
+                }
             })
 
             if (!res.ok) {

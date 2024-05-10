@@ -3,7 +3,7 @@ import {useNavigate, Link} from 'react-router-dom'
 import { FormNotification } from "./FormNotification.jsx"
 import PropType from 'prop-types'
 import './css/LoginForm.css'
-export function LoginForm ({ setUser }) {
+export function LoginForm () {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -47,9 +47,6 @@ export function LoginForm ({ setUser }) {
           'loggedBlogApp', JSON.stringify(userData)
         )
         
-        //set user state
-        setUser(userData)
-
         //reset states
         setUsername('')
         setPassword('')
