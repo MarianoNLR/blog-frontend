@@ -52,24 +52,24 @@ export function PostPage () {
 
     //TODO unlike function
     const handleUnlike = async () => {
-    //     try {
-    //         const res = await fetch(`http://localhost:3000/posts/${id}/unlike`, {
-    //             method: 'POST',
-    //             headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //             'Authorization': `Bearer ${userData.token}`
-    //             }
-    //         })
+        try {
+            const res = await fetch(`http://localhost:3000/posts/${id}/unlike`, {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userData.token}`
+                }
+            })
 
-    //         if (!res.ok) {
-    //             console.error(res)
-    //         } else {
-    //             navigate(0)
-    //         }
-    //     } catch (err) {
-    //         console.error(err)
-    //     }
+            if (!res.ok) {
+                console.error(res)
+            } else {
+                navigate(0)
+            }
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     return (
