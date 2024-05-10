@@ -8,6 +8,7 @@ export function PostPage () {
     const {id} = useParams()
     const [post, setPost] = useState(null)
     const navigate = useNavigate()
+    const userData = JSON.parse(localStorage.getItem('loggedBlogApp'))
     // eslint-disable-next-line no-unexpected-multiline
     useEffect(() => {
         fetch(`http://localhost:3000/posts/${id}`)
@@ -30,13 +31,12 @@ export function PostPage () {
 
     const handleLike = async () => {
         try {
-            let userData = localStorage.getItem('loggedBlogApp')
             const res = await fetch(`http://localhost:3000/posts/${id}/like`, {
                 method: 'POST',
                 headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${JSON.parse(userData).token}`
+                'Authorization': `Bearer ${userData.token}`
                 }
             })
 
@@ -48,15 +48,35 @@ export function PostPage () {
         } catch (err) {
             console.error(err)
         }
-        
-      
+    }
+
+    //TODO unlike function
+    const handleUnlike = async () => {
+    //     try {
+    //         const res = await fetch(`http://localhost:3000/posts/${id}/unlike`, {
+    //             method: 'POST',
+    //             headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Bearer ${userData.token}`
+    //             }
+    //         })
+
+    //         if (!res.ok) {
+    //             console.error(res)
+    //         } else {
+    //             navigate(0)
+    //         }
+    //     } catch (err) {
+    //         console.error(err)
+    //     }
     }
 
     return (
         <>  
             <main className="post-page-main">
                 {post ? 
-                    <>
+                    <>  
                         <div className="post-wrapper">
                             <h1 className="post-title">{post.title}</h1>
                             <p className="post-description">{post.description}</p>
@@ -64,7 +84,12 @@ export function PostPage () {
                         </div>
                         <div className="likes-section">
                             <div className="like-button-wrapper">
-                                <LikeButton handleLike={handleLike}></LikeButton>
+                                {post.usersLike.includes(userData.id) ? 
+                                    <LikeButton liked={true} handleLike={handleUnlike}></LikeButton>     
+                                    : 
+                                    <LikeButton liked={false} handleLike={handleLike}></LikeButton>       
+                                }
+                                
                             </div>
                             <span className="likes-number">{post.likes}</span>
                         </div>
