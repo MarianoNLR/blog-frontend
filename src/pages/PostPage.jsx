@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-import { LikeButton } from "../components/LikeButton.jsx"
 import './css/PostPage.css'
+import { LikeSection } from "../components/LikeSection.jsx"
+import { CommentSection } from "../components/CommentSection.jsx"
 
 export function PostPage () { 
     const {id} = useParams()
@@ -82,20 +83,8 @@ export function PostPage () {
                             <p className="post-description">{post.description}</p>
                             <p className="post-publishedAt">{formatDate(post.createdAt)}</p>
                         </div>
-                        <div className="likes-section">
-                            <div className="like-button-wrapper">
-                                {post.usersLike.includes(userData.id) ? 
-                                    <LikeButton liked={true} handleLike={handleUnlike}></LikeButton>     
-                                    : 
-                                    <LikeButton liked={false} handleLike={handleLike}></LikeButton>       
-                                }
-                                
-                            </div>
-                            <span className="likes-number">{post.likes}</span>
-                        </div>
-                        <div className="comments-section">
-                            Comments Section
-                        </div>
+                        <LikeSection post={post} handleLike={handleLike} handleUnlike={handleUnlike}></LikeSection>
+                        <CommentSection></CommentSection>
                     </>
                 :
                 <h1>Post not found.</h1>
