@@ -41,7 +41,7 @@ export function CommentForm () {
     return (
         <div className='comment-form-wrapper'>
             <form className='form'  onSubmit={handleSubmitComment}>
-            <textarea name="comment" placeholder='What do you think about this post?' id="comment" className='comment-input' rows='4'></textarea>
+            <textarea name="comment" placeholder='What do you think about this post?' id="comment" className='comment-input' rows='4' onChange={(e) => handleCommentChange(e)}></textarea>
                 <input type="submit" value="Comment" className='form-submit-input'/>
             </form>
         </div>
