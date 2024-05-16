@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import './css/PostPage.css'
 import { LikeSection } from "../components/LikeSection.jsx"
 import { CommentSection } from "../components/CommentSection.jsx"
+import { CommentForm } from "../components/CommentForm.jsx"
 
 export function PostPage () { 
     const {id} = useParams()
@@ -84,6 +85,7 @@ export function PostPage () {
                             <p className="post-publishedAt">{formatDate(post.createdAt)}</p>
                         </div>
                         <LikeSection post={post} handleLike={handleLike} handleUnlike={handleUnlike}></LikeSection>
+                        <CommentForm></CommentForm>
                         <CommentSection></CommentSection>
                     </>
                 :
