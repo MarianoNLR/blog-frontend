@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import { useParams, useNavigate } from "react-router-dom"
+import './css/CommentForm.css'
 
 export function CommentForm () {
     const [comment, setComment] = useState('')
@@ -39,9 +40,9 @@ export function CommentForm () {
     
     return (
         <div className='comment-form-wrapper'>
-            <form  onSubmit={handleSubmitComment}>
-                <input type="text" placeholder='What do you think about this post?' id='comment' className='comment-input' onChange={(e) => handleCommentChange(e)}/>
-                <input type="submit" value="Comment"/>
+            <form className='form'  onSubmit={handleSubmitComment}>
+            <textarea name="comment" placeholder='What do you think about this post?' id="comment" className='comment-input' rows='4'></textarea>
+                <input type="submit" value="Comment" className='form-submit-input'/>
             </form>
         </div>
     )
