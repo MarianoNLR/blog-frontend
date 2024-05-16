@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+.comment-form-wrapper {
+    padding: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.comment-input {
+    padding: 10px;
+    resize: none;
+    border: none;
+}
+
+.comment-input:focus {
+    outline: none;
+}
