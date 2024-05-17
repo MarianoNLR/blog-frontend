@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react'
 import { PostCard } from '../components/PostCard.jsx'
 import { FormNotification } from '../components/FormNotification.jsx'
+import { NewPostForm } from '../components/NewPostForm.jsx'
 import { useNavigate } from 'react-router-dom'
 import './css/Home.css'
 
@@ -19,12 +20,12 @@ export function Home () {
     
   },[])
 
-  const HandleOnChangeTitle = (e) => {
+  const handleOnChangeTitle = (e) => {
     console.log(e.target.value)
     setTitle(e.target.value)
   }
 
-  const HandleOnChangeDescription = (e) => {
+  const handleOnChangeDescription = (e) => {
     console.log(e.target.value)
     setDescription(e.target.value)
   }
@@ -66,17 +67,11 @@ export function Home () {
     <main className='main-home'>
       <h1>Home Page</h1>
       <div className="new-post-form-wrapper">
-        <form onSubmit={handleNewPostSubmit}>
-          <div className='new-post-form-group'>
-              <input type="text" name='title' id='title' placeholder="Your post's title" onChange={(e) => HandleOnChangeTitle(e)} />
-          </div>
-          <div className='new-post-form-group'>
-            <textarea name="description" id="description" rows="10" placeholder='What are you thinking about?' onChange={(e) => HandleOnChangeDescription(e)}></textarea>
-          </div>
-          <div className='new-post-form-group'>
-            <input type="submit" value="Post" />
-          </div>
-        </form>
+        <NewPostForm  
+        handleNewPostSubmit={handleNewPostSubmit} 
+        handleOnChangeTitle={handleOnChangeTitle} 
+        handleOnChangeDescription={handleOnChangeDescription}>
+        </NewPostForm>
         <FormNotification message={errorMessage}></FormNotification>
 
       </div>
