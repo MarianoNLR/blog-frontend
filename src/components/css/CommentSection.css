@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.comment-wrapper {
+    background-color: aliceblue;
+    color: black;
+    padding: 10px;
+}
