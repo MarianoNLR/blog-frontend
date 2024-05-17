@@ -84,7 +84,7 @@ export function PostPage () {
                             <p className="post-publishedAt">{formatDate(post.createdAt)}</p>
                         </div>
                         <LikeSection post={post} handleLike={handleLike} handleUnlike={handleUnlike}></LikeSection>
-                        <CommentSection></CommentSection>
+                        <CommentSection comments={post.comments}></CommentSection>
                     </>
                 :
                 <h1>Post not found.</h1>
