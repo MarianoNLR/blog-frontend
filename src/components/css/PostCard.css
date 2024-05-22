@@ -13,16 +13,17 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all .2s linear;
+    max-height: 200px;
+    overflow: hidden;
 }
 
 .post-card-title {
     margin: 0;
+    overflow: hidden;
 }
 
 .post-card-description {
     margin: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .post-card-wrapper:hover {
