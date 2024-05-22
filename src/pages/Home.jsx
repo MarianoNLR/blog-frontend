@@ -6,19 +6,23 @@ import { useNavigate } from 'react-router-dom'
 import './css/Home.css'
 
 export function Home () {
-  const [postList, setPostList] = useState([])
+  const [postList, setPostList] = useState({ posts: [] })
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const [page, setPage] = useState(1)
   const userData = JSON.parse(localStorage.getItem('loggedBlogApp'))
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`http://localhost:3000/posts/`)
+    fetch(`http://localhost:3000/posts?page=${page}`)
     .then(res => res.json())
-    .then(data => setPostList(data))
-    
-  },[])
+    .then(data => setPostList({
+      totalPages: data.totalPages,
+      page: data.page,
+      posts: [...postList.posts, ...data.posts]
+    }))
+  },[page])
 
   const handleOnChangeTitle = (e) => {
     console.log(e.target.value)
@@ -62,6 +66,10 @@ export function Home () {
     }
   }
 
+  const viewMoreHandle = () => {
+    setPage(page + 1)
+  }
+
   return (
     <>
     <main className='main-home'>
@@ -76,10 +84,16 @@ export function Home () {
 
       </div>
       <div className='post-list-wrapper'>
-        {postList.length > 0 && 
-          postList.map((item, index) =>
+        {postList.posts &&
+          postList.posts.map((item, index) =>
             <PostCard key={index} item={item} />
         )}
+      </div>
+      <div className='view-more-wrapper'>
+      {postList.totalPages > page 
+      ? <button className='view-more-button' onClick={viewMoreHandle}>View More</button> 
+      : null
+      }  
       </div>
     </main>
     </>
