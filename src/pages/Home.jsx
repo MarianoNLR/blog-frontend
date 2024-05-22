@@ -84,10 +84,13 @@ export function Home () {
 
       </div>
       <div className='post-list-wrapper'>
-        {postList.posts &&
+        {postList.posts && postList.posts.length > 0 ? 
           postList.posts.map((item, index) =>
             <PostCard key={index} item={item} />
-        )}
+          )
+        :  
+          <div><h3>Posts not found.</h3></div> 
+        }
       </div>
       <div className='view-more-wrapper'>
       {postList.totalPages > page 
