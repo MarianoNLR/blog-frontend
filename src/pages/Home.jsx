@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react'
 import { PostCard } from '../components/PostCard.jsx'
 import { FormNotification } from '../components/FormNotification.jsx'
 import { NewPostForm } from '../components/NewPostForm.jsx'
+import { LoadingComponent } from '../components/LoadingComponent.jsx'
 import { useNavigate } from 'react-router-dom'
 import './css/Home.css'
 
@@ -10,19 +11,23 @@ export function Home () {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
-  const [page, setPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(true)
   const userData = JSON.parse(localStorage.getItem('loggedBlogApp'))
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`http://localhost:3000/posts?page=${page}`)
+    fetch(`http://localhost:3000/posts?currentPage=${currentPage}`)
     .then(res => res.json())
-    .then(data => setPostList({
+    .then(data => {
+      setPostList(prevPostList => ({
       totalPages: data.totalPages,
       page: data.page,
-      posts: [...postList.posts, ...data.posts]
-    }))
-  },[page])
+      posts: [...prevPostList.posts, ...data.posts]
+      }))
+      setIsLoading(false)
+    })
+  },[currentPage])
 
   const handleOnChangeTitle = (e) => {
     console.log(e.target.value)
@@ -67,7 +72,8 @@ export function Home () {
   }
 
   const viewMoreHandle = () => {
-    setPage(page + 1)
+    setCurrentPage(currentPage + 1)
+    setIsLoading(true)
   }
 
   return (
@@ -84,19 +90,26 @@ export function Home () {
 
       </div>
       <div className='post-list-wrapper'>
-        {postList.posts && postList.posts.length > 0 ? 
-          postList.posts.map((item, index) =>
-            <PostCard key={index} item={item} />
-          )
-        :  
-          <div><h3>Posts not found.</h3></div> 
-        }
-      </div>
-      <div className='view-more-wrapper'>
-      {postList.totalPages > page 
-      ? <button className='view-more-button' onClick={viewMoreHandle}>View More</button> 
-      : null
-      }  
+        {!isLoading && 
+        <>
+          {postList.posts && postList.posts.length > 0 ? 
+            postList.posts.map((item, index) =>
+              <PostCard key={index} item={item} />
+            )
+          :  
+            <div><h3>Posts not found.</h3></div> 
+          }
+          <div className='view-more-wrapper'>
+            {postList.totalPages > currentPage 
+            ? <button className='view-more-button' onClick={viewMoreHandle}>View More</button> 
+            : null
+            }  
+          </div>
+      </>
+      }
+      {isLoading && 
+        <LoadingComponent></LoadingComponent>
+      }
       </div>
     </main>
     </>
