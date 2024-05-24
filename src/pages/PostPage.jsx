@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import './css/PostPage.css'
 import { LikeSection } from "../components/LikeSection.jsx"
 import { CommentSection } from "../components/CommentSection.jsx"
+import { DeletePostButton } from "../components/DeletePostButton.jsx"
 
 export function PostPage () { 
     const {id} = useParams()
@@ -16,7 +17,6 @@ export function PostPage () {
         .then(res => res.json())
         .then(post => setPost(post))
         .catch(err => console.log(err))
-        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -73,6 +73,27 @@ export function PostPage () {
         }
     }
 
+    const handleDeletePost = async (e) => {
+        e.preventDefault()
+        try {
+            const res = await fetch(`http://localhost:3000/posts/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${userData.token}`
+            }
+            })
+
+            if (!res.ok) {
+                console.error(res)
+            } else {
+                navigate('/')
+            }
+        } catch (error) {
+            console.error(error)
+        }
+        
+    }
+
     return (
         <>  
             <main className="post-page-main">
@@ -83,6 +104,10 @@ export function PostPage () {
                             <p className="post-description">{post.description}</p>
                             <p className="post-publishedAt">{formatDate(post.createdAt)}</p>
                         </div>
+                        {userData.id === post.user.id ? 
+                        <DeletePostButton handleDelete={handleDeletePost}></DeletePostButton> 
+                        : null}
+                        
                         <LikeSection post={post} handleLike={handleLike} handleUnlike={handleUnlike}></LikeSection>
                         <CommentSection comments={post.comments}></CommentSection>
                     </>
