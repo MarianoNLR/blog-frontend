@@ -87,3 +87,7 @@ body {
     cursor: pointer;
 }
 
+.delete-post-btn:hover {
+    background-color: rgb(190, 97, 97);
+}
+
