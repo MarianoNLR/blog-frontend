@@ -3,7 +3,7 @@ import './css/Header.css'
 export function Header () {
   return (
     <>
-      <div className="header-wrapper">Blog Project</div>
+      <div className="header-wrapper"><a href='/'>Blog Project</a></div>
     </>
   )
 }
