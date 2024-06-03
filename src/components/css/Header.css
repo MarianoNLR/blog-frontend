@@ -16,6 +16,11 @@
   color: black;
   text-decoration: none;
   align-self: center;
+  transition: text-shadow .1s linear;
+}
+
+.header-main-button:hover {
+  text-shadow: 2px 2px 2px gray;
 }
 
 .user-options-wrapper {
