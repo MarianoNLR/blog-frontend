@@ -24,10 +24,14 @@
   gap: 10px;
   cursor: pointer;
   padding: 2px;
-  transition: background-color .2s linear;
+  transition: all .2s linear;
   border-radius: 5px;
 }
 
 .user-options-wrapper:hover {
   background-color: gray;
+}
+
+.user-options-wrapper:hover span {
+  margin-right: 5px;
 }
