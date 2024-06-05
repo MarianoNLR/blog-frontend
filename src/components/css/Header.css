@@ -34,7 +34,8 @@
 }
 
 .logout-option-wrapper,
-.profile-option-wrapper {
+.profile-option-wrapper,
+.login-option-wrapper {
   padding: 5px;
   display: flex;
   align-items: center;
@@ -45,11 +46,19 @@
   transition: all .2s linear;
 }
 
+.login-option-wrapper {
+  gap: 10px;
+}
+
 .logout-option-wrapper:hover {
   background-color: gray;
 }
 
 .profile-option-wrapper:hover {
+  background-color: gray;
+}
+
+.login-option-wrapper:hover {
   background-color: gray;
 }
 
