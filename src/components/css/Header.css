@@ -52,3 +52,12 @@
 .profile-option-wrapper:hover {
   background-color: gray;
 }
+
+@media (max-width: 230px) {
+  .header-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+  }
+}

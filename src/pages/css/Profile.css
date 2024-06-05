@@ -39,3 +39,22 @@ body {
     font-size: 1.7rem;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+@media (max-width: 600px) {
+    .main-profile {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+
+@media (max-width: 350px) {
+    .data-profile-wrapper {
+       flex-direction: column;
+    }
+}
+
+@media (max-width: 200px) {
+    body {
+      width: min-content;
+    }
+  }
