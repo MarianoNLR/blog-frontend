@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.data-profile-wrapper {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid white;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+
+.user-posts-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.main-profile {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    min-height: 100vh;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.data-profile-value {
+    font-weight: 600;
+    font-size: 1.7rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
